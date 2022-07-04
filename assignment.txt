@@ -1,0 +1,84 @@
+                                                    Swift Part 1 Assignment
+
+1) Read about Sets in Swift. Explain the main functions of Set and give a couple of examples of usage.
+Ans: A set is a collection of unique data. That is, elements of a set cannot be duplicate.
+For example, Suppose we want to store information about student IDs. Since student IDs cannot be duplicate, we can use a set.
+var studentID : Set = [112, 114, 116, 118, 115]
+print("Student ID: \(studentID)")
+O/P->Student ID: [112, 114, 115, 118, 116]
+
+2) Read about Range operators in Swift. Give a couple of examples of usage.
+Ans: A range is a series of values between two numeric intervals.
+For example, var numbers = 1...4
+... is a range operator
+1...4 contains values 1, 2, 3, 4
+
+for numbers in 1...4 {
+  print(numbers)
+}
+O/P-> 1\n 2\n 3\n 4\n
+
+3) Consider two Strings constant which can hold empty string (“”). In case both the string constants are empty strings then the function should print “none” otherwise the function should print the combination of both the string constants. For eg:
+let string1 = “”, string2 = “” then print “none”
+Another example:
+let string1 = “first string”, string2 = “and this is second string” the print “first string and this is second string”
+Ans: (str1.isEmpty && str2.isEmpty) ? print("none") : print(str1+str2)
+
+4) Consider a constant which is an array of integers. Print elements of the array such that no value should be printed more than once. 
+Eg: let elements = [6, 8, 1, 25, 65, 14 ,2, 1, 6, 6, 8]
+Ans: var unique = Set<Int>()
+let elements = [6, 8, 1, 25, 65, 14 ,2, 1, 6, 6, 8]
+for element in elements{
+unique.insert(element)
+}
+print(unique)
+
+5) Consider a constant which is an array of integers and print all its odd numbers and even numbers separately. (Use switch statements) 
+Eg: let elements = [6, 8, 1, 25, 65, 14 ,2]
+// Output should be as below:
+Odd numbers: 1, 25, 65
+Even numbers: 6, 8, 14, 2
+Ans: var even=[Int]()
+var odd=[Int]()
+for element in elements{
+    switch (element%2){
+        case 0:
+            even.append(element)
+        default:
+            odd.append(element)
+    }
+}
+print("Odd numbers: \(odd)")
+print("Even numbers: \(even)")
+
+6) Consider an integer array. Also consider three integers “x”, “y” and “z”. Value of “x” can only be 0 and 1, and if the value of “x” is 0 then print the sum of elements in the array ranging from index “y” to “z”. Both elements at “y” and “z” will be included in the range. 
+And if the value of x is 1 then insert the integer “z” at “y” index and print all elements of the array.
+For example:
+	Let's consider the value of x is 0 and the value of “y” is 2 and the value of “z” is 4.
+	let values = [2,4,1,5,1,8,6,4]
+	Since the value of x is 0, print sum of elements from 2 to 4 (i.e [1, 5,1] ) which is 7
+	But if the value of x is 1 (values of y and z are the same as above ) 
+	print [2, 4, 4, 1, 5, 1, 8, 6, 4].
+Ans:  switch x{
+    case 0:
+        var sum=0
+        for i in values[y...z]{
+            sum+=i
+        }
+        print(sum)
+    case 1:
+        values.insert(z, at:y)
+        print(values)
+    default:
+        print("")
+}
+
+7) Create a dictionary that contains the count for each character in the string. (“abbcccdddd” -> {a: 1, b: 2, c: 3, d: 4}). 
+Iterate over this dictionary and print for every character: “Character <char> appears <count> times in the string”.
+Ans: var dict=[Character:Int]()
+var arr=[Int]()
+for char in str{
+    dict[char]=Int(dict[char] ?? 0) + 1
+}
+print(dict)
+
